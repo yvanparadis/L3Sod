@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YVAN'S Attendance Project</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: rgba(209, 248, 69, 0.5);
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            background-color: rgb(124, 2, 238);
+            padding: 15px 50px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar a {
+            color: rgb(252, 122, 0);
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+            transition: background-color 0.3s, transform 0.3s;
+            border-radius: 5px;
+        }
+
+        .navbar a:hover {
+            background-color: rgb(214, 214, 99);
+            color: black;
+        }
+
+        .navbar .icon {
+            display: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-image: url("yyy.png");
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .search-bar {
+            width: 50%;
+            padding: 12px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 25px;
+            margin-top: 10px;
+        }
+
+        /* Service Cards */
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            padding: 50px 20px;
+        }
+
+        .service-card {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-card a {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 15px;
+            background-color: rgb(124, 2, 238);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .service-card a:hover {
+            background-color: rgb(214, 214, 99);
+            color: black;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: rgb(124, 2, 238);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            position: relative;
+        }
+
+        .footer p {
+            margin: 0;
+        }
+
+        .footer-icons a {
+            color: white;
+            margin: 0 10px;
+            font-size: 24px;
+            transition: color 0.3s;
+        }
+
+        .footer-icons a:hover {
+            color: rgb(214, 214, 99);
+        }
+
+        /* Mobile Responsiveness */
+        @media screen and (max-width: 768px) {
+            .navbar {
+                padding: 15px;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .navbar a {
+                margin: 10px 0;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .search-bar {
+                width: 80%;
+            }
+        }
+
+        /* Sidenav Styles */
+        #menu-icon {
+            font-size: 30px;
+            cursor: pointer;
+            margin: 20px;
+        }
+
+        .sidenav {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            right: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            transition: 0.5s;
+            padding-top: 60px;
+        }
+
+        .sidenav a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #818181;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidenav a:hover {
+            color: #f1f1f1;
+        }
+
+        .sidenav .closebtn {
+            position: absolute;
+            top: 0;
+            left: 25px;
+            font-size: 36px;
+            margin-right: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="menu-icon" onclick="toggleNav()">&#9776; Menu</div>
+    <div id="sidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">&times;</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Clients</a>
+        <a href="#">Contact</a>
+    </div>
+
+    <div class="navbar">
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </div>
+
+    <div class="services">
+        <div class="service-card">
+            <h3>Graphic Design</h3>
+            <p>Create stunning logos, branding, and graphics for businesses or events.</p>
+            <a href="#">Explore Designs</a>
+        </div>
+        <div class="service-card">
+            <h3>Web Development</h3>
+            <p>Build dynamic, responsive websites and web apps for all your business needs.</p>
+            <a href="#">Explore Web Development</a>
+        </div>
+        <div class="service-card">
+            <h3>Content Writing</h3>
+            <p>Get engaging blog posts, website content, and marketing copy written by professionals.</p>
+            <a href="#">Explore Writing</a>
+        </div>
+        <div class="service-card">
+            <h3>SEO Optimization</h3>
+            <p>Boost your website's visibility on search engines and drive more traffic to your site.</p>
+            <a href="#">Explore SEO Services</a>
+        </div>
+        <div class="service-card">
+            <h3>Video Editing</h3>
+            <p>Transform your raw footage into a polished, professional video with creative edits.</p>
+            <a href="#">Explore Video Editing</a>
+        </div>
+        <div class="service-card">
+            <h3>Mobile App Development</h3>
+            <p>Create mobile applications for iOS and Android tailored to your business goals.</p>
+            <a href="#">Explore App Development</a>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2025 Yvan's Project | Designed by Yvan</p>
+        <div class="footer-icons">
+            <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.github.com" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.youtube.com" target="_blank"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p><a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms of Service</a></p>
+    </div>
+
+    <script>
+        function toggleNav() {
+            var sidenav = document.getElementById("sidenav");
+            if (sidenav.style.width === "250px") {
+                sidenav.style.width = "0";
+            } else {
+                sidenav.style.width = "250px";
+            }
+        }
+    </script>
+</body>
+
+</html>

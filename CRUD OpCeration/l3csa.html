@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student's Attendance List</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
+            margin: 0;
+        }
+        main {
+            padding: 20px;
+            max-width: 800px;
+            margin: auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .operation {
+            margin-bottom: 20px;
+        }
+        .operation label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .operation input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .operation button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .operation button:hover {
+            background-color: #45a049;
+        }
+        .operation-list {
+            list-style: none;
+            padding: 0;
+        }
+        .operation-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #fafafa;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .operation-item div {
+            flex: 1;
+        }
+        .operation-item button {
+            background-color: #dc3545;
+            border: none;
+            color: white;
+            padding: 8px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+        .operation-item button:hover {
+            background-color: #c82333;
+        }
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Student's Attendance List</h1>
+        <h3>by Yvan</h3>
+        <h2>L3 COMPUTER SYSTEM AND ARCHITECTURE</h2>
+    </header>
+    <main>
+        <div class="operation">
+            <label for="operationName">Student's name:</label>
+            <input type="text" id="operationName">
+        </div>
+        <div class="operation">
+            <label for="operationType">day:</label>
+            <input type="text" id="operationType">
+        </div>
+        <div class="operation">
+            <label for="operationDescription">time:</label>
+            <input type="text" id="operationDescription">
+        </div>
+        <div class="operation">
+            <button onclick="addOperation()">Add Student</button>
+        </div>
+        <ul id="operationList" class="operation-list"></ul>
+    </main>
+    <footer>
+        <h4><em><center>by Yvan</center></em></h4>
+    </footer>
+    <script>
+        function addOperation() {
+            const name = document.getElementById('operationName').value;
+            const type = document.getElementById('operationType').value;
+            const description = document.getElementById('operationDescription').value;
+
+            if (name && type && description) {
+                const operationList = document.getElementById('operationList');
+
+                const operationItem = document.createElement('li');
+                operationItem.className = 'operation-item';
+                operationItem.innerHTML = `
+                    <div>
+                        <p><strong>Name:</strong> ${name}</p>
+                        <p><strong>Type:</strong> ${type}</p>
+                        <p><strong>Description:</strong> ${description}</p>
+                    </div>
+                    <button onclick="deleteOperation(this)">Delete</button>
+                `;
+
+                operationList.appendChild(operationItem);
+
+                document.getElementById('operationName').value = '';
+                document.getElementById('operationType').value = '';
+                document.getElementById('operationDescription').value = '';
+            }
+        }
+
+        function deleteOperation(button) {
+            const operationItem = button.parentElement;
+            operationItem.remove();
+        }
+    </script>
+</body>
+</html>
