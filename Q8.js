@@ -1,6 +1,6 @@
 const countVowels = olgan => {
     let count = 0;
-    for (let abel of olgan) {
+    for (let abel of yvan) {
         if ('aeiouAEIOU'.includes(abel)) count++;
     }
     return count;
